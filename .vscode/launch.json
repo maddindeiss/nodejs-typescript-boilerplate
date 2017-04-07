@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Backend: Compile TS Files",
+            "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+            "args": [
+                "backend:compile"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Backend: Watch TS Files",
+            "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+            "args": [
+                "backend:watch"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Backend: Run",
+            "preLaunchTask": "backend:compile",
+            "sourceMaps": true,
+            "showAsyncStacks": true,
+            "stopOnEntry": true,
+            "console": "internalConsole",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}\\backend\\index.ts",
+            "outFiles": [
+                "${workspaceRoot}\\release\\backend\\**\\*.js"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "An den Port anfügen",
+            "address": "localhost",
+            "port": 5858,
+            "outFiles": []
+        }
+    ]
+}
